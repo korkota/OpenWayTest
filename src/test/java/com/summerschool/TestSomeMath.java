@@ -55,37 +55,4 @@ public class TestSomeMath {
 
         assertEquals(expected, result, delta);
     }
-
-    @Test
-    public void testAwesomeFunctionWithNaNArguments() {
-        double a, b, c, d;
-        a = b = c = d = Double.NaN;
-
-        double result = SomeMath.awesomeFunction(a, b, c, d);
-        double expected = 0;
-
-        assertEquals(expected, result, delta);
-    }
-
-    @Test
-    public void testAwesomeFunctionWithNegativeInfiniteArguments() {
-        double a, b, c, d;
-        a = b = c = d = Double.NEGATIVE_INFINITY;
-
-        double result = SomeMath.awesomeFunction(a, b, c, d);
-        double expected = 0;
-
-        assertEquals(expected, result, delta);
-    }
-
-    @Test
-    public void testAwesomeFunctionWithPositiveInfiniteArguments() {
-        double a, b, c, d;
-        a = b = c = d = Double.POSITIVE_INFINITY;
-
-        double result = SomeMath.awesomeFunction(a, b, c, d);
-        double expected = 0;
-
-        assertEquals(expected, result, delta);
-    }
 }

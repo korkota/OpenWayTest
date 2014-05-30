@@ -4,12 +4,8 @@ public class SomeMath {
     public static double awesomeFunction(double a, double b, double c, double d) {
         double result = (a + b) / (c - d);
 
-        if(result == Double.POSITIVE_INFINITY) {
-            return Double.MAX_VALUE;
-        }
-
-        if(result == Double.NEGATIVE_INFINITY) {
-            return Double.MIN_VALUE;
+        if(Double.isInfinite(result)) {
+            return (result > 0) ? Double.MAX_VALUE : Double.MIN_VALUE;
         }
 
         if(Double.isNaN(result)) {
