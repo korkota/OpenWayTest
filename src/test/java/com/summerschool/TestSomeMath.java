@@ -6,9 +6,6 @@ import org.junit.Test;
 public class TestSomeMath {
     private static final double delta = 0.0;
 
-    /**
-     * Testing of the path #1.
-     */
     @Test
     public void testAwesomeFunctionWhenResultShouldBeMaxValue() {
         double a = 1;
@@ -22,9 +19,6 @@ public class TestSomeMath {
         assertEquals(expected, result, delta);
     }
 
-    /**
-     * Testing of the path #2.
-     */
     @Test
     public void testAwesomeFunctionWhenResultShouldBeMinValue() {
         double a = -1;
@@ -38,9 +32,6 @@ public class TestSomeMath {
         assertEquals(expected, result, delta);
     }
 
-    /**
-     * Testing of the path #3.
-     */
     @Test
     public void testAwesomeFunctionWhenResultShouldBeZero() {
         double a, b, c, d;
@@ -52,15 +43,38 @@ public class TestSomeMath {
         assertEquals(expected, result, delta);
     }
 
-    /**
-     * Testing of the path #4.
-     */
     @Test
-    public void testAwesomeFunctionWhenResultShouldBeFiniteNumber() {
+        public void testAwesomeFunctionWhenNumeratorIsMoreAbsMaxValue() {
+        double a, b;
+        a = b = Double.MAX_VALUE;
+        double c = 100;
+        double d = 0;
+
+        double result = SomeMath.awesomeFunction(a, b, c, d);
+        double expected = a / (c - d) + b / (c - d);
+
+        assertEquals(expected, result, delta);
+    }
+
+    @Test
+    public void testAwesomeFunctionWhenNumeratorIsLessAbsMinValue() {
+        double a = 1.5 * Double.MIN_VALUE;
+        double b = -Double.MIN_VALUE;
+        double c = 0.0001;
+        double d = 0;
+
+        double result = SomeMath.awesomeFunction(a, b, c, d);
+        double expected = a / (c - d) + b / (c - d);
+
+        assertEquals(expected, result, delta);
+    }
+
+    @Test
+    public void testAwesomeFunctionWhenResultShouldBe42() {
         double a = 21;
         double b = 21;
-        double c = 4;
-        double d = 3;
+        double c = 2;
+        double d = 1;
 
         double result = SomeMath.awesomeFunction(a, b, c, d);
         double expected = 42;

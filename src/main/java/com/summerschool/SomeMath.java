@@ -2,24 +2,39 @@ package com.summerschool;
 
 public class SomeMath {
     public static double awesomeFunction(double a, double b, double c, double d) {
-        double result = (a + b) / (c - d);
+        double numerator = a + b;
+        double denominator = c - d;
+        double result;
 
-        // Path #1.
+        boolean numeratorIsMoreThenAbsMaxValue = sameSigns(a, b) && Double.isInfinite(numerator) && Math.abs(denominator) > 1;
+        boolean numeratorIsLessThenAbsMinValue = oppositeSigns(a, b) && numerator == 0.0 && Math.abs(denominator) < 1;
+
+        if (numeratorIsMoreThenAbsMaxValue || numeratorIsLessThenAbsMinValue) {
+            result = a / denominator + b / denominator;
+        } else {
+            result = numerator / denominator;
+        }
+
         if (result == Double.POSITIVE_INFINITY) {
             return Double.MAX_VALUE;
         }
 
-        // Path #2.
         if (result == Double.NEGATIVE_INFINITY) {
             return -Double.MAX_VALUE;
         }
 
-        // Path #3.
         if(Double.isNaN(result)) {
             return 0;
         }
 
-        // Path #4.
         return result;
+    }
+
+    private static boolean sameSigns(double a, double b) {
+        return (a > 0 && b > 0 || a < 0 && b < 0);
+    }
+
+    private static boolean oppositeSigns(double a, double b) {
+        return (a > 0 && b < 0 || a < 0 && b > 0);
     }
 }
